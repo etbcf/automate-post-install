@@ -62,7 +62,7 @@ commands = [
         'mv /tmp/post-install/nvim "$HOME/.config/nvim && '
         'mv /tmp/post-install/.tmux.conf "$HOME/.tmux.conf && '
         'mv /tmp/post-install/.gitconfig "$HOME/.gitconfig && '
-        'mv /tmp/post-install/bin "$HOME/bin'
+        'mv /tmp/post-install/bin "$HOME/bin',
         "📥 Cloning dotfiles from GitHub...",
     ),
     (
