@@ -39,7 +39,7 @@ commands = [
     ),
     (
         "flatpak install flathub -y "
-        "org.signal.Signal org.videolan.VLC com.bitwarden "
+        "org.signal.Signal org.videolan.VLC com.bitwarden.desktop "
         "com.valvesoftware.Steam com.mattjakeman.ExtensionManager",
         "📦 Installing Flatpak apps...",
     ),
@@ -63,7 +63,7 @@ commands = [
         'mv /tmp/post-install/.tmux.conf "$HOME/.tmux.conf && '
         'mv /tmp/post-install/.gitconfig "$HOME/.gitconfig && '
         'mv /tmp/post-install/bin "$HOME/bin'
-        "📥 Cloning dotfiles from GitHub..."
+        "📥 Cloning dotfiles from GitHub...",
     ),
     (
         "echo '⬇️ Installing Node.js via NVM...' && "
@@ -80,8 +80,9 @@ commands = [
     ),
     (
         "curl -sS https://starship.rs/install.sh | sh && ",
-        'echo "eval \\"$(starship init bash)\\"" >>"$HOME/.bashrc" && ',
-        'source "$HOME/.bashrc"🚀 Installing Starship prompt...',
+        'echo "eval \\"$(starship init bash)\\"" >>"$HOME/.bashrc" && '
+        'source "$HOME/.bashrc"',
+        "🚀 Installing Starship prompt...",
     ),
     (
         "sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && "
