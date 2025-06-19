@@ -88,24 +88,48 @@ commands = [
         'source "$HOME/.bashrc"',
         "🚀 Installing Starship prompt...",
     ),
-    (
-        "sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && "
-        "sudo tee /etc/yum.repos.d/vscode.repo > /dev/null << 'EOF'\n"
-        "[code]\n"
-        "name=Visual Studio Code\n"
-        "baseurl=https://packages.microsoft.com/yumrepos/vscode\n"
-        "enabled=1\n"
-        "autorefresh=1\n"
-        "type=rpm-md\n"
-        "gpgcheck=1\n"
-        "gpgkey=https://packages.microsoft.com/keys/microsoft.asc\n"
-        "EOF\n"
-        "&& sudo dnf check-update && sudo dnf install -y code",
-        "💻 Installing Visual Studio Code...",
-    ),
 ]
 
 for cmd, desc in commands:
     run_command(cmd, desc)
+
+
+def add_vscode_repo():
+    repo_content = """[code]
+name=Visual Studio Code
+baseurl=https://packages.microsoft.com/yumrepos/vscode
+enabled=1
+autorefresh=1
+type=rpm-md
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+"""
+
+    # Write repo file
+    with open("/tmp/vscode.repo", "w") as f:
+        f.write(repo_content)
+
+    # Import key and move repo file
+    subprocess.run(
+        "sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc",
+        shell=True,
+        check=True,
+    )
+    subprocess.run(
+        "sudo mv /tmp/vscode.repo /etc/yum.repos.d/vscode.repo", shell=True, check=True
+    )
+
+    # Update and install
+    subprocess.run("sudo dnf check-update", shell=True, check=True)
+    subprocess.run("sudo dnf install -y code", shell=True, check=True)
+
+
+# Then call it somewhere in your script
+print("💻 Installing Visual Studio Code...")
+try:
+    add_vscode_repo()
+    print("✅ Visual Studio Code installed!")
+except Exception as e:
+    print(f"❌ Failed to install VS Code: {e}")
 
 print("✅ All done. You may want to reboot now.")
