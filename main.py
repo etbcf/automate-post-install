@@ -44,7 +44,7 @@ commands = [
         "📦 Installing Flatpak apps...",
     ),
     (
-        'echo "eval \\"$(fzf --bash)\\"" >> "$HOME/.bashrc" && source "$HOME/.bashrc"',
+        'echo \'eval "$(fzf --bash)"\' >> "$HOME/.bashrc" && bash -c "source ~/.bashrc"',
         "🔧 Enabling fzf keybindings...",
     ),
     (
@@ -58,22 +58,26 @@ commands = [
     ("sudo systemctl enable --now firewalld", "🔒 Enabling firewall..."),
     (
         "git clone --depth 1 https://github.com/etbcf/post-install.git /tmp/post-install && "
-        'mv /tmp/post-install/.vimrc "$HOME/.vimrc && '
-        'mv /tmp/post-install/nvim "$HOME/.config/nvim && '
-        'mv /tmp/post-install/.tmux.conf "$HOME/.tmux.conf && '
-        'mv /tmp/post-install/.gitconfig "$HOME/.gitconfig && '
-        'mv /tmp/post-install/bin "$HOME/bin',
+        'mv /tmp/post-install/.vimrc "$HOME/.vimrc" && '
+        'mv /tmp/post-install/nvim "$HOME/.config/nvim" && '
+        'mv /tmp/post-install/.tmux.conf "$HOME/.tmux.conf" && '
+        'mv /tmp/post-install/.gitconfig "$HOME/.gitconfig" && '
+        'mv /tmp/post-install/bin "$HOME/bin"',
         "📥 Cloning dotfiles from GitHub...",
     ),
     (
-        "echo '⬇️ Installing Node.js via NVM...' && "
+        "bash -c '"
         "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash && "
         'export NVM_DIR="$HOME/.nvm" && '
-        '[ -s "$NVM_DIR/nvm.sh" ] && \\ . "$NVM_DIR/nvm.sh" && '
-        "nvm install --lts",
+        '[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" && '
+        "nvm install --lts"
+        "'",
         "⬇️ Installing Node.js via NVM...",
     ),
-    ('source "$HOME/.bashrc/bin/functions"', "⚙️ Sourcing script..."),
+    (
+        'bash -c "source $HOME/bin/functions"',
+        "⚙️ Sourcing functions script...",
+    ),
     (
         "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
         "🔌 Installing vim-plug for Vim...",
