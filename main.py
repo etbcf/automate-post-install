@@ -83,7 +83,7 @@ commands = [
         "🔌 Installing vim-plug for Vim...",
     ),
     (
-        "curl -sS https://starship.rs/install.sh | sh && ",
+        "curl -sS https://starship.rs/install.sh | sh && "
         'echo "eval \\"$(starship init bash)\\"" >>"$HOME/.bashrc" && '
         'source "$HOME/.bashrc"',
         "🚀 Installing Starship prompt...",
