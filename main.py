@@ -8,8 +8,12 @@ repo_url = "https://github.com/etbcf/automate-post-install.git"
 repo_name = "automate-post-install"
 
 try:
-    # Clone the repo
-    subprocess.run(["git", "clone", repo_url])
+    # Check if the repo directory already exists
+    if not os.path.isdir(repo_name):
+        print(f"Cloning repository '{repo_name}'...")
+        subprocess.run(["git", "clone", repo_url])
+    else:
+        print(f"Repository '{repo_name}' already exists. Skipping clone.")
 
     os.chdir(repo_name)
 
