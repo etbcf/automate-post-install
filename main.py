@@ -44,7 +44,7 @@ commands = [
         "📦 Installing Flatpak apps...",
     ),
     (
-        'echo \'eval "$(fzf --bash)"\' >> "$HOME/.bashrc" && bash -c "source ~/.bashrc"',
+        'grep -qxF \'eval "$(fzf --bash)"\' "$HOME/.bashrc" || echo \'eval "$(fzf --bash)"\' >> "$HOME/.bashrc"',
         "🔧 Enabling fzf keybindings...",
     ),
     (
@@ -84,8 +84,7 @@ commands = [
     ),
     (
         "curl -sS https://starship.rs/install.sh | sh && "
-        'echo "eval \\"$(starship init bash)\\"" >>"$HOME/.bashrc" && '
-        'source "$HOME/.bashrc"',
+        'grep -qxF \'eval "$(starship init bash)"\' "$HOME/.bashrc" || echo \'eval "$(starship init bash)"\' >> "$HOME/.bashrc"',
         "🚀 Installing Starship prompt...",
     ),
 ]
@@ -124,7 +123,6 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc
     subprocess.run("sudo dnf install -y code", shell=True, check=True)
 
 
-# Then call it somewhere in your script
 print("💻 Installing Visual Studio Code...")
 try:
     add_vscode_repo()
