@@ -33,7 +33,7 @@ commands = [
     ),
     (
         "sudo dnf install -y neovim vim-enhanced tmux git gnome-tweaks "
-        "ripgrep fd-find fzf uv ruff the_silver_searcher "
+        "ripgrep fd-find fzf uv ruff the_silver_searcher trash-cli "
         "gnome-themes-extra @virtualization steam-devices fastfetch",
         "🧰 Installing essential tools...",
     ),
