@@ -32,9 +32,9 @@ commands = [
         "🔧 Enabling openh264 repo...",
     ),
     (
-        "sudo dnf install -y neovim vim-enhanced tmux git gnome-tweaks "
-        "ripgrep fd-find fzf uv ruff the_silver_searcher trash-cli "
-        "gnome-themes-extra @virtualization steam-devices fastfetch",
+        "sudo dnf install -y neovim vim-enhanced tmux git python3-pip"
+        "fzf uv ruff the_silver_searcher trash-cli "
+        "@virtualization steam-devices fastfetch",
         "🧰 Installing essential tools...",
     ),
     (
@@ -75,17 +75,14 @@ commands = [
         "⬇️ Installing Node.js via NVM...",
     ),
     (
+        'grep -qxF \'source "$HOME/bin/functions"\' "$HOME/.bashrc" || '
+        'echo \'source "$HOME/bin/functions"\' >> "$HOME/.bashrc" && '
         'bash -c "source $HOME/bin/functions"',
-        "⚙️ Sourcing functions script...",
+        "⚙️ Adding and sourcing functions script...",
     ),
     (
         "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
         "🔌 Installing vim-plug for Vim...",
-    ),
-    (
-        "curl -sS https://starship.rs/install.sh | sh && "
-        'grep -qxF \'eval "$(starship init bash)"\' "$HOME/.bashrc" || echo \'eval "$(starship init bash)"\' >> "$HOME/.bashrc"',
-        "🚀 Installing Starship prompt...",
     ),
 ]
 
